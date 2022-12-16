@@ -1,0 +1,48 @@
+<html>
+{% extends 'main.html' %}
+<body>
+{% block content %}
+ <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+            <h3 class="singleProject__subtitle">OPTIONS:</h3>
+            <div>
+                <p class="header__menuItem"><a href="{% url 'update' topic.id %}" class="btn btn--sub">Update Topic</a>
+                </p>
+                </br>
+                <p class="header__menuItem"><a href="{% url 'delete' topic.id %}" class="btn btn--sub">Delete Topic</a>
+                </p>
+            </div>
+            </br>
+          <h3 class="singleProject__subtitle">Tags:</h3>
+          <div class="singleProject__toolStack">
+              {% for tag in topic.tags.all %}
+            <span class="tag tag--pill tag--sub tag--lg">
+                <form method="GET" action="{% url 'topics' %}">
+                    <input name="search" class="btn btn--sub--link" type="submit" value="{{tag}}" style="font-size: 13px">
+                </form>
+            </span>
+              {% endfor %}
+          </div>
+        </div>
+
+          <div class="column column--2of3">
+          <img class="singleProject__preview" src="{{ topic.featured_image.url }}" alt="portfolio thumbnail" />
+          <h2 class="singleProject__title">{{topic.title}}</h2>
+              {% if topic.subtitle is not None %}
+          <h3 class="singleProject__subtitle">{{topic.subtitle}}</h3>
+              {% endif %}
+          <div class="singleProject__info">
+              {{topic.description}}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+{% endblock %}
+</body>
+</html>

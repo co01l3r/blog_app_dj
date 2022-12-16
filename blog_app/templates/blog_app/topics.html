@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/html">
+{% extends 'main.html' %}
+<body>
+{% block content %}
+<main class="projects">
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2><span>MY BLOG POSTS</span></h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="projectsList">
+        <div class="container">
+            <div class="grid grid--three">
+                {% for topic in topics %}
+                <div class="column">
+                    <div class="card project">
+                        <a href="{% url 'topic' topic.id %}" class="project">
+                            <img class="project__thumbnail" src="{{topic.featured_image.url}}" alt="project thumbnail" />
+                            <div class="card__body">
+                                <h3 class="project__title">{{topic.title}}</h3>
+                                <p><a href="{% url 'topic' topic.id %}" class="project__author">
+                                    {{topic.description | truncatechars:150}}
+                                </a></p>
+                                </br>
+                                <div class="project__tags">
+                                    {% for tag in topic.tags.all %}
+                                    <span class="tag tag--pill tag--main">
+
+                                        <form method="GET" action="{% url 'topics' %}">
+                                            <input name="search" class="btn btn--sub--link" type="submit" value="{{tag}}" style="font-size: 13px">
+                                        </form>
+
+                                    </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}
+
+</body>
+</html>
