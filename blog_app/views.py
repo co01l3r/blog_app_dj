@@ -5,6 +5,15 @@ from django.db.models import Q
 
 
 def topics(request):
+    """
+    Display a list of topics based on a search query.
+
+    Parameters:
+    request (HttpRequest): The incoming HTTP request.
+
+    Returns:
+    HttpResponse: The rendered HTTP response.
+    """
     search = request.GET.get('search')
 
     if request.GET.get('search'):
@@ -18,6 +27,16 @@ def topics(request):
 
 
 def topic(request, pk):
+    """
+    Display a single topic and its associated tags.
+
+    Parameters:
+    request (HttpRequest): The incoming HTTP request.
+    pk (int): The primary key of the topic to display.
+
+    Returns:
+    HttpResponse: The rendered HTTP response.
+    """
     topic = Topic.objects.get(id=pk)
     tags = topic.tags.all()
 
@@ -26,6 +45,16 @@ def topic(request, pk):
 
 
 def topic_create_or_update(request, pk=None):
+    """
+    Create or update a topic and its associated tags.
+
+    Parameters:
+    request (HttpRequest): The incoming HTTP request.
+    pk (int, optional): The primary key of the topic to update. If not provided, a new topic will be created.
+
+    Returns:
+    HttpResponse: The rendered HTTP response, or a redirect to the topics list.
+    """
     if pk:
         topic = Topic.objects.get(id=pk)
     else:
@@ -52,6 +81,16 @@ def topic_create_or_update(request, pk=None):
 
 
 def topic_delete(request, pk):
+    """
+    Delete a topic and its associated tags.
+
+    Parameters:
+    request (HttpRequest): The incoming HTTP request.
+    pk (int): The primary key of the topic to delete.
+
+    Returns:
+    HttpResponse: The rendered HTTP response, or a redirect to the topics list.
+    """
     topic = Topic.objects.get(id=pk)
 
     if request.method == 'POST':
