@@ -33,7 +33,8 @@ def topic_create_or_update(request, pk=None):
 
     if request.method == 'POST':
         form = TopicForm(request.POST, request.FILES, instance=topic)
-        new_tags = request.POST.get('new_tags').replace(',', " ").split()
+        new_tags = request.POST.get('new_tags') or ""
+        new_tags = new_tags.replace(',', " ").split()
 
         if form.is_valid():
             topic = form.save()
