@@ -55,7 +55,7 @@ class TestViews(TestCase):
         self.assertTrue(Topic.objects.filter(title='Topic Title').exists())
         self.assertTrue(Tag.objects.filter(name='Tag 1').exists())
 
-    def test_update_existing_topic(self):
+    def test_update_existing_topic_post(self):
         factory = RequestFactory()
         url = reverse('update', kwargs={'pk': '1'})
         # Create an existing topic

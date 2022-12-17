@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from .models import Topic, Tag
 from . forms import TopicForm
 from django.db.models import Q
+from typing import Optional
+from django.http import HttpRequest, HttpResponse
 
 
-def topics(request):
+def topics(request: HttpRequest) -> HttpResponse:
     """
     Display a list of topics based on a search query.
 
@@ -26,7 +28,7 @@ def topics(request):
     return render(request, 'blog_app/topics.html', context)
 
 
-def topic(request, pk):
+def topic(request: HttpRequest, pk: int) -> HttpResponse:
     """
     Display a single topic and its associated tags.
 
@@ -44,7 +46,7 @@ def topic(request, pk):
     return render(request, 'blog_app/topic.html', context)
 
 
-def topic_create_or_update(request, pk=None):
+def topic_create_or_update(request: HttpRequest, pk: Optional[int] = None) -> HttpResponse:
     """
     Create or update a topic and its associated tags.
 
@@ -80,7 +82,7 @@ def topic_create_or_update(request, pk=None):
     return render(request, 'blog_app/topic_form.html', context)
 
 
-def topic_delete(request, pk):
+def topic_delete(request: HttpRequest, pk: int) -> HttpResponse:
     """
     Delete a topic and its associated tags.
 
