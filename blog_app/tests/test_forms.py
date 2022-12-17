@@ -27,4 +27,3 @@ class TestForms(TestCase):
     def test_form_invalid(self):
         form = TopicForm(data={'title': ''})
         self.assertFalse(form.is_valid())
-        

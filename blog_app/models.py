@@ -10,6 +10,9 @@ class Topic(models.Model):
     featured_image = models.ImageField(null=True, blank=True, default="default.jpg")
     tags = models.ManyToManyField('tag', blank=True)
 
+    class Meta:
+        ordering = ['created']
+
     def __str__(self):
         return self.title
 
