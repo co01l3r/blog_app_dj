@@ -65,7 +65,6 @@ class TestViews(TestCase):
             description='Test Description',
         )
 
-        # Send a POST request to the view with valid data
         data = {
             'title': 'Updated Title',
             'subtitle': 'Updated Subtitle',
@@ -74,10 +73,8 @@ class TestViews(TestCase):
         request = factory.post(url, data)
         response = topic_create_or_update(request, pk=existing_topic.pk)
 
-        # Check that the view returns a redirect response
         self.assertEqual(response.status_code, 302)
 
-        # Check that the existing topic was updated
         updated_topic = Topic.objects.get(pk=existing_topic.pk)
         self.assertEqual(updated_topic.title, 'Updated Title')
         self.assertEqual(updated_topic.subtitle, 'Updated Subtitle')
