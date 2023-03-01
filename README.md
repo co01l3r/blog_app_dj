@@ -1,4 +1,7 @@
 # blog_app
+![workflow](https://github.com/co01l3r/blog_app_dj/actions/workflows/django.yml/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/co01l3r/blog_app_dj)
+
 responsive django personal blog app
 
 
@@ -53,3 +56,8 @@ $ python3 manage.py loaddata initial_data.json
 
 #### admin:
 ![image](https://user-images.githubusercontent.com/25802489/208301701-a432f5c0-6ead-4729-839e-8335ce5262d8.png)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/co01l3r/blog_app_dj)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/co01l3r/blog_app_dj)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/co01l3r/blog_app_dj)
+
